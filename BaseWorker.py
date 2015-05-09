@@ -100,13 +100,12 @@ def parseInfo(item):
 def sendToNextWorker(item,baseChoice):
     data = json.loads(item)
     data['base'] = baseChoice
-
     customer_channel = parseInfo(item)
     print data
     print  "Send Base to MeatWorker:"
     #Send to next worker
     response = unirest.post("http://localhost:8081/sendBase", headers={"Accept": "application/json"},
-                            params=data)
+                            body=data)
     print response.code
     return response
 

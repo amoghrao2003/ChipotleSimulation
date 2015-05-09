@@ -31,7 +31,6 @@ class Worker(threading.Thread):
             else:
                 #Hey there is a Customer in my shop.
                 item = self.__queue.get()
-
                 #parse to get Customer Info
                 customer_channel = parseInfo(item)
                 print "Connecting to "+customer_channel
@@ -58,7 +57,9 @@ def startWorker():
 
 
 def parseInfo(item):
+    print item
     data = json.loads(item)
+    print data['clientChannel']
     return data['clientChannel']
 
 def sendToNextWorker(item,meatChoice):

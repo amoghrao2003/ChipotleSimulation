@@ -5,9 +5,7 @@ import MeatWorker as workers
 
 @route('/sendBase', method='POST')
 def sendBase():
-    requestBody = request._get_body_string()
-    print requestBody
-    workers.meatQueue.put(requestBody)
+    workers.meatQueue.put(request._get_body_string())
     #print requestBody
     return "Success"
 
