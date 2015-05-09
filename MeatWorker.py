@@ -6,6 +6,7 @@ import Queue
 import time, random
 import json
 import unirest
+import requests
 # change the no of people adding bhaji after asking customer.
 # we have only one now, we can change
 WORKERS = 1
@@ -59,6 +60,7 @@ def startWorker():
 def parseInfo(item):
     print item
     data = json.loads(item)
+   # data = requests.get(item).json()
     print data['clientChannel']
     return data['clientChannel']
 
