@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="599ccb00-4e37-493b-bf59-673c7835e91f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BaseWorker.py" afterPath="$PROJECT_DIR$/BaseWorker.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BaseWorkerServer.py" afterPath="$PROJECT_DIR$/BaseWorkerServer.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Customer.py" afterPath="$PROJECT_DIR$/Customer.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MeatWorker.py" afterPath="$PROJECT_DIR$/MeatWorker.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="project2.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -27,11 +29,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="BaseWorker.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="BaseWorker.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/BaseWorker.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3316583" vertical-offset="1551" max-vertical-offset="2040">
-              <caret line="99" column="38" selection-start-line="99" selection-start-column="38" selection-end-line="99" selection-end-column="38" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="867" max-vertical-offset="2040">
+              <caret line="100" column="4" selection-start-line="100" selection-start-column="4" selection-end-line="110" selection-end-column="19" />
               <folding>
                 <element signature="e#23#39#0" expanded="true" />
               </folding>
@@ -39,11 +41,57 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="BaseWorkerWithCap.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/BaseWorkerWithCap.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="979" max-vertical-offset="1989">
+              <caret line="111" column="0" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
+              <folding>
+                <element signature="e#24#40#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CashierWorker.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/CashierWorker.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.35929647" vertical-offset="673" max-vertical-offset="1836">
+              <caret line="48" column="3" selection-start-line="48" selection-start-column="3" selection-end-line="48" selection-end-column="3" />
+              <folding>
+                <element signature="e#24#40#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CashierWorkerServer.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CashierWorkerServer.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="374">
+              <caret line="8" column="12" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
+              <folding>
+                <element signature="e#25#73#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tasks.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tasks.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="119">
+              <caret line="1" column="2" selection-start-line="1" selection-start-column="2" selection-end-line="1" selection-end-column="2" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="BaseWorkerServer.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/BaseWorkerServer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="493">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
+              <caret line="11" column="21" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
               <folding>
                 <element signature="e#2#50#0" expanded="true" />
               </folding>
@@ -54,8 +102,8 @@
       <file leaf-file-name="Customer.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Customer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="408">
-              <caret line="11" column="32" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="78" max-vertical-offset="527">
+              <caret line="17" column="34" selection-start-line="17" selection-start-column="34" selection-end-line="17" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -64,9 +112,11 @@
       <file leaf-file-name="MeatWorkerServer.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MeatWorkerServer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
-              <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-              <folding />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="357">
+              <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+              <folding>
+                <element signature="e#22#70#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -74,8 +124,8 @@
       <file leaf-file-name="MeatWorker.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MeatWorker.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="361" max-vertical-offset="1377">
-              <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="656" max-vertical-offset="1513">
+              <caret line="78" column="0" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
               <folding>
                 <element signature="e#23#39#0" expanded="true" />
               </folding>
@@ -91,8 +141,14 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/MeatWorker.py" />
         <option value="$PROJECT_DIR$/BaseWorker.py" />
+        <option value="$PROJECT_DIR$/BaseWorkerServer.py" />
+        <option value="$PROJECT_DIR$/BaseWorkerWithCap.py" />
+        <option value="$PROJECT_DIR$/tasks.txt" />
+        <option value="$PROJECT_DIR$/CashierWorkerServer.py" />
+        <option value="$PROJECT_DIR$/MeatWorker.py" />
+        <option value="$PROJECT_DIR$/Customer.py" />
+        <option value="$PROJECT_DIR$/CashierWorker.py" />
       </list>
     </option>
   </component>
@@ -163,7 +219,7 @@
       </console-settings>
     </option>
   </component>
-  <component name="RunManager" selected="Python.MeatWorkerServer">
+  <component name="RunManager" selected="Python.CashierWorkerServer">
     <configuration default="false" name="BaseWorkerServer" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -215,6 +271,25 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="project2" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/MeatWorkerServer.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="CashierWorkerServer" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="project2" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/CashierWorkerServer.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <RunnerSettings RunnerId="PythonRunner" />
@@ -343,16 +418,18 @@
       <option name="USE_PARAM" value="false" />
       <method />
     </configuration>
-    <list size="3">
+    <list size="4">
       <item index="0" class="java.lang.String" itemvalue="Python.BaseWorkerServer" />
       <item index="1" class="java.lang.String" itemvalue="Python.Customer" />
       <item index="2" class="java.lang.String" itemvalue="Python.MeatWorkerServer" />
+      <item index="3" class="java.lang.String" itemvalue="Python.CashierWorkerServer" />
     </list>
     <recent_temporary>
-      <list size="3">
-        <item index="0" class="java.lang.String" itemvalue="Python.MeatWorkerServer" />
-        <item index="1" class="java.lang.String" itemvalue="Python.Customer" />
-        <item index="2" class="java.lang.String" itemvalue="Python.BaseWorkerServer" />
+      <list size="4">
+        <item index="0" class="java.lang.String" itemvalue="Python.CashierWorkerServer" />
+        <item index="1" class="java.lang.String" itemvalue="Python.MeatWorkerServer" />
+        <item index="2" class="java.lang.String" itemvalue="Python.Customer" />
+        <item index="3" class="java.lang.String" itemvalue="Python.BaseWorkerServer" />
       </list>
     </recent_temporary>
   </component>
@@ -367,7 +444,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -408,40 +485,30 @@
     </option>
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/MeatWorkerServer.py</url>
+          <line>2</line>
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Customer.py">
+    <entry file="file://$PROJECT_DIR$/tasks.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="408">
-          <caret line="11" column="32" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="119">
+          <caret line="1" column="2" selection-start-line="1" selection-start-column="2" selection-end-line="1" selection-end-column="2" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MeatWorkerServer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MeatWorker.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="361" max-vertical-offset="1377">
-          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-          <folding>
-            <element signature="e#23#39#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/BaseWorkerServer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="493">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
+          <caret line="11" column="21" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
           <folding>
             <element signature="e#2#50#0" expanded="true" />
           </folding>
@@ -450,10 +517,68 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/BaseWorker.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3316583" vertical-offset="1551" max-vertical-offset="2040">
-          <caret line="99" column="38" selection-start-line="99" selection-start-column="38" selection-end-line="99" selection-end-column="38" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1581" max-vertical-offset="2040">
+          <caret line="100" column="4" selection-start-line="100" selection-start-column="4" selection-end-line="110" selection-end-column="19" />
           <folding>
             <element signature="e#23#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BaseWorkerWithCap.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1591" max-vertical-offset="1989">
+          <caret line="111" column="0" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
+          <folding>
+            <element signature="e#24#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MeatWorker.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="656" max-vertical-offset="1513">
+          <caret line="78" column="0" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
+          <folding>
+            <element signature="e#23#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MeatWorkerServer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="357">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding>
+            <element signature="e#22#70#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Customer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="78" max-vertical-offset="527">
+          <caret line="17" column="34" selection-start-line="17" selection-start-column="34" selection-end-line="17" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CashierWorkerServer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="374">
+          <caret line="8" column="12" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
+          <folding>
+            <element signature="e#25#73#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CashierWorker.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.35929647" vertical-offset="673" max-vertical-offset="1836">
+          <caret line="48" column="3" selection-start-line="48" selection-start-column="3" selection-end-line="48" selection-end-column="3" />
+          <folding>
+            <element signature="e#24#40#0" expanded="true" />
           </folding>
         </state>
       </provider>
