@@ -6,7 +6,8 @@ import Queue
 import time, random
 import json
 import unirest
-import requests
+import pymysql
+#import requests
 # change the no of people adding bhaji after asking customer.
 # we have only one now, we can change
 WORKERS = 1
@@ -18,6 +19,8 @@ class Worker(threading.Thread):
     def __init__(self, queue):
         self.__queue = queue
         threading.Thread.__init__(self)
+        self.connection = pymysql.connect("dbinstance-sjsu-amogh.cyht8ykut6xk.us-west-1.rds.amazonaws.com","voldy","voldysjsu","cmpe275")
+
 
     def run(self):
         print "Garnish Worker Listening"
@@ -43,7 +46,11 @@ class Worker(threading.Thread):
                 #If customer replies with his choice, Process order and send to next worker
                 if responseGarnish.code==200:
                     garnishValue = responseGarnish._body
+                    self.cursor = self.connection.cursor()
                     print "I will add Delicious "+responseGarnish.body+" for you !"
+                    self.cursor.execute("UPDATE  Orders SET Stage ='{0}' WHERE CustomerName = '{1}'".format("4",parseCustomerInfo(item)))
+                    self.connection.commit()
+                    self.cursor.close()
                     sendToNextWorker(item,garnishValue)
 
 garnishQueue = Queue.Queue(0)
@@ -60,6 +67,10 @@ def parseInfo(item):
    # data = requests.get(item).json()
     print data['clientChannel']
     return data['clientChannel']
+
+def parseCustomerInfo(item):
+    data = json.loads(item)
+    return data['customerName']
 
 def sendToNextWorker(item,garnishValue):
     data = json.loads(item)

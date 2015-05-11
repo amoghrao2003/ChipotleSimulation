@@ -5,6 +5,7 @@ import Queue
 import time, random
 import json
 import unirest
+import pymysql
 # change the no of people adding bhaji after asking customer.
 # we have only one now, we can change
 WORKERS = 1
@@ -16,6 +17,8 @@ class Worker(threading.Thread):
     def __init__(self, queue):
         self.__queue = queue
         threading.Thread.__init__(self)
+        self.connection = pymysql.connect("dbinstance-sjsu-amogh.cyht8ykut6xk.us-west-1.rds.amazonaws.com","voldy","voldysjsu","cmpe275")
+
 
     def run(self):
         print "Cashier Worker Listening"
@@ -45,6 +48,10 @@ class Worker(threading.Thread):
                 response=sendToCustomer(item,total)
             if response.code==200:
                     print "Amount received: "+response.body
+                    self.cursor = self.connection.cursor()
+                    self.cursor.execute("UPDATE  Orders SET Stage ='{0}' WHERE CustomerName = '{1}'".format("5",parseCustomerInfo(item)))
+                    self.connection.commit()
+                    self.cursor.close()
 
 '''
                 response = unirest.get("http://"+customer_channel+"/getBase", headers={ "Accept": "application/json" },
@@ -72,6 +79,7 @@ def startWorker():
     print  "Start Worker Thread"
     Worker(billQueue).start()
 
+
 def calculateCost(item):
     cost=0
     data = json.loads(item)
@@ -84,6 +92,10 @@ def calculateCost(item):
 def parseInfo(item):
     data = json.loads(item)
     return data['clientChannel']
+
+def parseCustomerInfo(item):
+    data = json.loads(item)
+    return data['customerName']
 
 def sendToCustomer(item,cost):
     data = json.loads(item)

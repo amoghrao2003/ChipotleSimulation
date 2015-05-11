@@ -6,6 +6,7 @@ import Queue
 import time, random
 import json
 import unirest
+import pymysql
 # change the no of people adding bhaji after asking customer.
 # we have only one now, we can change
 WORKERS = 1
@@ -17,6 +18,8 @@ class Worker(threading.Thread):
     def __init__(self, queue):
         self.__queue = queue
         threading.Thread.__init__(self)
+        self.connection = pymysql.connect("dbinstance-sjsu-amogh.cyht8ykut6xk.us-west-1.rds.amazonaws.com","voldy","voldysjsu","cmpe275")
+
 
     def run(self):
         print "Base Worker Listening"
@@ -32,6 +35,9 @@ class Worker(threading.Thread):
             else:
                 #Hey there is a Customer in my shop.
                 item = self.__queue.get()
+
+
+
 
                 #parse to get Customer Info
                 customer_channel = parseInfo(item)
@@ -55,6 +61,10 @@ class Worker(threading.Thread):
                 #If customer replies with his choice, Process order and send to next worker
                 if responseRice.code==200:
                     print "I will add Delicious "+responseRice.body+" for you !"
+                    self.cursor = self.connection.cursor()
+                    self.cursor.execute("INSERT INTO Orders(CustomerName, Stage ) VALUES ( '{0}', '{1}')".format(parseCustomerInfo(item),"1"))
+                    self.connection.commit()
+                    self.cursor.close()
                     riceValue = responseRice.body
                     sendToNextWorker(item,baseValue,riceValue)
 
@@ -75,6 +85,10 @@ for i in range(WORKERS):
 def parseInfo(item):
     data = json.loads(item)
     return data['clientChannel']
+
+def parseCustomerInfo(item):
+    data = json.loads(item)
+    return data['customerName']
 
 def sendToNextWorker(item,baseValue,riceValue):
     data = json.loads(item)

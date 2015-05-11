@@ -6,7 +6,8 @@ import Queue
 import time, random
 import json
 import unirest
-import requests
+import pymysql
+#import requests
 # change the no of people adding bhaji after asking customer.
 # we have only one now, we can change
 WORKERS = 1
@@ -18,6 +19,8 @@ class Worker(threading.Thread):
     def __init__(self, queue):
         self.__queue = queue
         threading.Thread.__init__(self)
+        self.connection = pymysql.connect("dbinstance-sjsu-amogh.cyht8ykut6xk.us-west-1.rds.amazonaws.com","voldy","voldysjsu","cmpe275")
+
 
     def run(self):
         print "Meat Worker Listening"
@@ -56,6 +59,10 @@ class Worker(threading.Thread):
                 if responseBeans.code==200:
                     print "I will add Delicious "+responseBeans.body+" for you !"
                     beanValue = responseBeans.body
+                    self.cursor = self.connection.cursor()
+                    self.cursor.execute("UPDATE  Orders SET Stage ='{0}' WHERE CustomerName = '{1}'".format("2",parseCustomerInfo(item)))
+                    self.connection.commit()
+                    self.cursor.close()
                     sendToNextWorker(item,meatValue,beanValue)
 
 
@@ -79,6 +86,10 @@ def parseInfo(item):
     print data['clientChannel']
     return data['clientChannel']
 
+def parseCustomerInfo(item):
+    data = json.loads(item)
+    return data['customerName']
+
 def sendToNextWorker(item,meatValue,beanValue):
     data = json.loads(item)
     data["meat"] = meatValue
@@ -90,6 +101,7 @@ def sendToNextWorker(item,meatValue,beanValue):
     #Send to next worker
     response = unirest.post("http://localhost:8082/send", headers={"Accept": "application/json"},
                             params=datadumps)
+
     #print response.code
     return response
 
