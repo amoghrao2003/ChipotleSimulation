@@ -37,49 +37,28 @@ class Worker(threading.Thread):
                 customer_channel = parseInfo(item)
                 print "Connecting to "+customer_channel
 
-                print "Asking Customer (Burrito/Bowl)"
+                print "Asking Customer (Tortilla/Bowl)"
                 #Lets ask him his requirements Burrito/Bowl
-                response = unirest.get("http://"+customer_channel+"/getBase", headers={ "Accept": "application/json" },
-                                       params={ "base": "Burrito/Bowl" })
+                responseBase = unirest.get("http://"+customer_channel+"/getBase", headers={ "Accept": "application/json" },
+                                       params={ "base": "Tortilla/Bowl" })
+
                 #If customer replies with his choice, Process order and send to next worker
-                if response.code==200:
-                    print "I will add Delicious "+response.body+" for you !"
-                    sendToNextWorker(item,response.body)
+                if responseBase.code==200:
+                    print "I will add Delicious "+responseBase.body+" for you !"
+                    baseValue = responseBase.body
 
+                print "Asking Customer (Brown/White Rice)"
+                #Lets ask user which type of Rice he wants.
+                responseRice = unirest.get("http://"+customer_channel+"/getRice", headers={ "Accept": "application/json" },
+                                       params={ "rice": "Brown,White" })
 
-
-
-
-
-
-
-
-
-
-
+                #If customer replies with his choice, Process order and send to next worker
+                if responseRice.code==200:
+                    print "I will add Delicious "+responseRice.body+" for you !"
+                    riceValue = responseRice.body
+                    sendToNextWorker(item,baseValue,riceValue)
 
 orderQueue = Queue.Queue(0)
-
-
-#this will come for each customer . below consider that 1-5 customer made a rest call of their choices.
-# all should be added in queue. worker works on the queue
-# we will add in queue as soon as we get request from neighbouring worker
-
-'''
-customer_veggie_choice = ["tamatar-customr1","kanda-customr2","mirchi-customr3","aalo-customr4","batata-customr5"]
-
-for i in customer_veggie_choice:
-        orderQueue.put(i)
-'''
-
-# Create a Worker whose work is to add bhaji. the bhaji he has to add will be in Queue
-#This guy will listen to Queue
-
-'''
-for i in range(WORKERS):
-    Worker(orderQueue).start() # start a worker
-'''
-
 
 def startWorker():
     print  "Start Worker Thread"
@@ -97,17 +76,18 @@ def parseInfo(item):
     data = json.loads(item)
     return data['clientChannel']
 
-def sendToNextWorker(item,baseChoice):
+def sendToNextWorker(item,baseValue,riceValue):
     data = json.loads(item)
-    data["base"] = baseChoice
+    data["base"] = baseValue
+    data["rice"] = riceValue
     datadumps = json.dumps(data)
     customer_channel = parseInfo(item)
-    print "datadumps ::" + datadumps
-    print  "Send Base to MeatWorker:"
+
+    print  "Send to MeatWorker:"
     #Send to next worker
-    response = unirest.post("http://localhost:8081/sendBase", headers={"Accept": "application/json"},
+    response = unirest.post("http://localhost:8081/send", headers={"Accept": "application/json"},
                             params=datadumps)
-    print response.code
+    #print response.code
     return response
 
 

@@ -20,12 +20,12 @@ class Worker(threading.Thread):
         threading.Thread.__init__(self)
 
     def run(self):
-        print "Meat Worker Listening"
+        print "Sauce Worker Listening"
         while 1:
          #   print  "Hey Im working: MeatWorker"
 
             #Keep listening there is no customer yet in store
-            if meatQueue.empty():
+            if sauceQueue.empty():
                 #Chill
                 time.sleep(random.randint(10, 100) / 50.0)
                 continue
@@ -36,39 +36,27 @@ class Worker(threading.Thread):
                 customer_channel = parseInfo(item)
                 print "Connecting to "+customer_channel
 
-                print "Asking Customer (Chicken/Beef/Pork)"
+                print "Asking Customer (Corn/Mayo/Salsa/Red sauce)"
                 #Lets ask him his requirements Burrito/Bowl
-                responseMeat = unirest.get("http://"+customer_channel+"/getMeat", headers={ "Accept": "application/json" },
-                                       params={ "meat": "Chicken/Beef/Pork" })
-
+                responseSauce = unirest.get("http://"+customer_channel+"/getSauce", headers={ "Accept": "application/json" },
+                                       params={ "sauce": "Corn/Mayo/Salsa/Red sauce" })
                 #If customer replies with his choice, Process order and send to next worker
-                if responseMeat.code==200:
-                    meatValue = responseMeat._body
-                    print "I will add Delicious "+responseMeat.body+" for you !"
-
-
-                print "Asking Customer (Pinto/Black Beans)"
-                #Lets ask user which type of Rice he wants.
-                responseBeans = unirest.get("http://"+customer_channel+"/getBeans", headers={ "Accept": "application/json" },
-                                       params={ "beans": "Pinto,Black" })
-
-                #If customer replies with his choice, Process order and send to next worker
-                if responseBeans.code==200:
-                    print "I will add Delicious "+responseBeans.body+" for you !"
-                    beanValue = responseBeans.body
-                    sendToNextWorker(item,meatValue,beanValue)
+                if responseSauce.code==200:
+                    sauceValue = responseSauce._body
+                    print "I will add Delicious "+responseSauce.body+" for you !"
+                    sendToNextWorker(item,sauceValue)
 
 
 
 
 
-meatQueue = Queue.Queue(0)
+sauceQueue = Queue.Queue(0)
 
 
 
 def startWorker():
     print  "Start Worker Thread"
-    Worker(meatQueue).start()
+    Worker(sauceQueue).start()
 
 
 
@@ -79,16 +67,16 @@ def parseInfo(item):
     print data['clientChannel']
     return data['clientChannel']
 
-def sendToNextWorker(item,meatValue,beanValue):
+def sendToNextWorker(item,sauceValue):
     data = json.loads(item)
-    data["meat"] = meatValue
-    data["bean"] = beanValue
+    data["sauce"] = sauceValue
+
     datadumps = json.dumps(data)
     customer_channel = parseInfo(item)
 
-    print  "Send to SauceWorker:"
+    print  "Send to GarnishWorker:"
     #Send to next worker
-    response = unirest.post("http://localhost:8082/send", headers={"Accept": "application/json"},
+    response = unirest.post("http://localhost:8083/send", headers={"Accept": "application/json"},
                             params=datadumps)
     #print response.code
     return response

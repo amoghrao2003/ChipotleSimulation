@@ -90,7 +90,7 @@ def sendToCustomer(item,cost):
     data["total"] = cost
     datadumps = json.dumps(data)
     customer_channel = parseInfo(item)
-    print "datadumps ::" + datadumps
+    #print "datadumps ::" + datadumps
     print  "Send Base to MeatWorker:"
     #Send to next worker
     response = unirest.post("http://"+customer_channel+"/sendBill", headers={"Accept": "application/json"},
