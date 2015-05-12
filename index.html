@@ -1,0 +1,143 @@
+<html>
+
+<head>
+<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js">  </script> 
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+
+<title> 275 Project 2 </title>
+<script type="text/javascript">
+  
+// A $( document ).ready() block.
+$(document).ready(function() {
+	//
+
+		setInterval(function(){ populateData(); }, 3000);
+
+});
+
+  
+  
+  function populateData(){
+	$.get("http://127.0.0.1:8006/getMyData", function(data) {      // start get()
+				var customerItems = [];
+				var progressItems = [];
+					$.each(data, function(key, value) {
+					        console.log(value[0]);
+                            // value[0]  name
+                            // value[1]  progress
+                            customerItems.push(value[0])
+						    progressItems.push(value[1])
+					});
+
+
+    $('#container').highcharts({   // start container
+        chart: {
+            type: 'bar'
+        },
+        title: {
+            text: 'Chipotle Order Tracking'
+        },
+        xAxis: {
+            categories: customerItems
+        },
+        yAxis: {
+                min: 0,
+            title: {
+                //  text: 'Order Progress'
+                //text: ['With BaseWorker','With Meatworker', 'With SauceWorker', 'With Cashier', 'Order Completed']
+            //text: ['Not Started____','With BaseWorker____','With Meatworker____', 'With SauceWorker____', 'With Cashier____', 'Order Completed____']
+
+               // text: customerItems
+            }
+        },
+        legend: {
+            reversed: true
+        },
+        plotOptions: {
+            series: {
+                stacking: 'normal'
+            }
+        },
+        series: [{
+            name: 'Order progress',
+            //data: [8,5, 3, 4, 7, 2]
+            data: progressItems
+        }]
+    });   // end container
+
+
+
+
+
+
+
+
+		//	});
+		});
+  } // end pop data
+  
+  
+  $(function () {
+    $('#container').highcharts({
+        chart: {
+            type: 'bar'
+        },
+        title: {
+            text: 'Chipotle Order Tracking'
+        },
+        xAxis: {
+            categories: ['Customer6','Customer5', 'Customer4', 'Customer3', 'Customer2', 'Customer1']
+        },
+        yAxis: {
+            min: 0,
+            title: {
+              //  text: 'Order Progress'
+              //  text: ['Google','Customer5', 'Customer4', 'Customer3', 'Customer2', 'Customer1']
+              //  text: ['Not Started__________','With BaseWorker________','With Meatworker________', 'With SauceWorker__________', 'With Cashier_________', 'Order Completed__________']
+
+            }
+        },
+        legend: {
+            reversed: true
+        },
+        plotOptions: {
+            series: {
+                stacking: 'normal'
+            }
+        },
+        series: [{
+            name: 'Customer Info',
+            data: [8,5, 3, 4, 7, 2]
+        }]
+    });
+});
+  
+
+  function draw () {
+     
+	var canvas = document.getElementById('rectangleMeat');
+    if (canvas.getContext) {
+      var context = canvas.getContext('2d');
+      
+      context.fillStyle = "rgb(150,29,28)";
+      context.fillRect (10,10,280,280);
+    } else {
+      // put code for browsers that don’t support canvas here
+      alert("This page uses HTML 5 to render correctly. Other browsers may not see anything.");
+    }
+  }
+</script> 
+
+</head>
+
+
+<body>
+
+<div id="container" style="min-width: 310px; max-width: 800px; height: 400px; margin: 0 auto"></div>
+
+
+</body>
+
+
+</html>
