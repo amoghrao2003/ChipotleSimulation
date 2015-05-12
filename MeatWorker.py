@@ -40,6 +40,8 @@ class Worker(threading.Thread):
                 print "Connecting to "+customer_channel
 
                 print "Asking Customer (Chicken/Beef/Pork)"
+                #for demo sleep
+                time.sleep(random.randint(10, 100) / 50.0)
                 #Lets ask him his requirements Burrito/Bowl
                 responseMeat = unirest.get("http://"+customer_channel+"/getMeat", headers={ "Accept": "application/json" },
                                        params={ "meat": "Chicken/Beef/Pork" })
@@ -51,6 +53,8 @@ class Worker(threading.Thread):
 
 
                 print "Asking Customer (Pinto/Black Beans)"
+                #for demo sleep
+                time.sleep(random.randint(10, 100) / 50.0)
                 #Lets ask user which type of Rice he wants.
                 responseBeans = unirest.get("http://"+customer_channel+"/getBeans", headers={ "Accept": "application/json" },
                                        params={ "beans": "Pinto,Black" })
@@ -80,10 +84,10 @@ def startWorker():
 
 
 def parseInfo(item):
-    print item
+   # print item
     data = json.loads(item)
    # data = requests.get(item).json()
-    print data['clientChannel']
+  #  print data['clientChannel']
     return data['clientChannel']
 
 def parseCustomerInfo(item):

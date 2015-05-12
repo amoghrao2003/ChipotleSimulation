@@ -37,9 +37,11 @@ class Worker(threading.Thread):
                 item = self.__queue.get()
                 #parse to get Customer Info
                 customer_channel = parseInfo(item)
-                print "Connecting to "+customer_channel
+             #   print "Connecting to "+customer_channel
 
                 print "Asking Customer (Cheese/Guacamole/Lettuce)"
+                #for demo sleep
+                time.sleep(random.randint(10, 100) / 50.0)
                 #Lets ask him his requirements Burrito/Bowl
                 responseGarnish = unirest.get("http://"+customer_channel+"/getGarnish", headers={ "Accept": "application/json" },
                                        params={ "sauce": "Cheese,Guacamole,Lettuce" })
@@ -62,10 +64,10 @@ def startWorker():
 
 
 def parseInfo(item):
-    print item
+    #print item
     data = json.loads(item)
    # data = requests.get(item).json()
-    print data['clientChannel']
+   # print data['clientChannel']
     return data['clientChannel']
 
 def parseCustomerInfo(item):
@@ -80,6 +82,8 @@ def sendToNextWorker(item,garnishValue):
     customer_channel = parseInfo(item)
 
     print  "Send to Cashier:"
+    #for demo sleep
+    time.sleep(random.randint(10, 100) / 50.0)
     #Send to next worker
     response = unirest.post("http://localhost:8084/send", headers={"Accept": "application/json"},
                             params=datadumps)

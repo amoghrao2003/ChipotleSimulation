@@ -30,20 +30,23 @@ class Worker(threading.Thread):
             #Keep listening there is no customer yet in store
             if orderQueue.empty():
                 #Chill
-                time.sleep(random.randint(10, 100) / 50.0)
+                time.sleep(random.randint(10, 100) / 80.0)
                 continue
             else:
                 #Hey there is a Customer in my shop.
                 item = self.__queue.get()
 
-
+                #for demo sleep
+                time.sleep(random.randint(10, 100) / 50.0)
 
 
                 #parse to get Customer Info
                 customer_channel = parseInfo(item)
                 print "Connecting to "+customer_channel
 
-                print "Asking Customer (Tortilla/Bowl)"
+                print "Asking Customer (Burrito/Bowl)"
+                #for demo sleep
+                time.sleep(random.randint(10, 100) / 50.0)
                 #Lets ask him his requirements Burrito/Bowl
                 responseBase = unirest.get("http://"+customer_channel+"/getBase", headers={ "Accept": "application/json" },
                                        params={ "base": "Tortilla/Bowl" })
@@ -54,6 +57,8 @@ class Worker(threading.Thread):
                     baseValue = responseBase.body
 
                 print "Asking Customer (Brown/White Rice)"
+                #for demo sleep
+                time.sleep(random.randint(10, 100) / 50.0)
                 #Lets ask user which type of Rice he wants.
                 responseRice = unirest.get("http://"+customer_channel+"/getRice", headers={ "Accept": "application/json" },
                                        params={ "rice": "Brown,White" })

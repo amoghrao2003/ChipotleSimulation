@@ -13,8 +13,8 @@ def send():
 
 @route('/payBill', method='POST')
 def payBill():
-    return "Have a great Day !!!"
-
+    print "Here is your Burrito! Enjoy your meal and have a great Day!"
+    return "Have a great Day!"
 
 
 if __name__ == '__main__':

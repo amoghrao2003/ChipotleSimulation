@@ -9,6 +9,13 @@ import pymysql
 # change the no of people adding bhaji after asking customer.
 # we have only one now, we can change
 WORKERS = 1
+#Defining s map for calculating cost of Items. This map can be replaced with a database
+baseMap = {'Burrito':2.5, 'Bowl':2.5}
+meatMap = {'Chicken':1,'Pork':1, 'Beef':0.75}
+riceMap = {'Brown Rice':1.25,'White Rice':1}
+beanMap = {'Pinto' : 0.5, 'Black Beans':0.5}
+sauceMap = {'Corn Sauce':0.5,'Mayo' :0.5, 'Salsa Sauce' :0.5,'Red sauce':0.5}
+extrasMap = {'Cheese':1,'Guacamole':0.5,'Lettuce':0.5}
 
 # Create thread class
 class Worker(threading.Thread):
@@ -37,7 +44,7 @@ class Worker(threading.Thread):
 
                 #parse to get Customer Info
                 customer_channel = parseInfo(item)
-                print "Connecting to "+customer_channel
+                #print "Connecting to "+customer_channel
 
                 print "telling customer his total bill amount"
                 #print "Asking Customer if he wants any drink"
@@ -83,10 +90,8 @@ def startWorker():
 def calculateCost(item):
     cost=0
     data = json.loads(item)
-
-    if(data['base']=='Burrito'):
-        cost=5
-
+    cost = baseMap.get(data["base"]) + meatMap.get(data["meat"]) + riceMap.get(data["rice"]) + beanMap.get(data["bean"]) + extrasMap.get(data["garnish"]) + sauceMap.get(data["sauce"]);
+    print "Cost is",cost
     return cost
 
 def parseInfo(item):
@@ -103,11 +108,13 @@ def sendToCustomer(item,cost):
     datadumps = json.dumps(data)
     customer_channel = parseInfo(item)
     #print "datadumps ::" + datadumps
-    print  "Send Base to MeatWorker:"
+    #for demo sleep
+    time.sleep(random.randint(10, 100) / 50.0)
+    print  "Send Bill to Customer"
     #Send to next worker
     response = unirest.post("http://"+customer_channel+"/sendBill", headers={"Accept": "application/json"},
                             params=datadumps)
-    print response.code
+    #print response.code
     return response
 
 

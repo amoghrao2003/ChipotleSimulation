@@ -4,42 +4,51 @@ __author__ = 'voldy'
 from bottle import request,route,static_file,run
 import json
 import unirest
+import random
 
 @route('/getBase', method='GET')
 def getBase():
-    print "I would Like to have Burrito"
-    return "Burrito"
+    Base = ['Burrito', 'Bowl']
+    print "I would Like to have " + random.choice(Base)
+    return random.choice(Base)
 
 @route('/getMeat', method='GET')
 def getMeat():
-    print "I would Like to have Chicken"
-    return "Chicken"
+    Meat = ['Chicken','Pork', 'Beef']
+    print "I would Like to have " + random.choice(Meat)
+    return random.choice(Meat)
 
 @route('/getRice', method='GET')
 def getRice():
-    print "I would Like to have Brown Rice"
-    return "Brown"
+    rice = ['Brown Rice','White Rice']
+    print "I would Like to have " + random.choice(rice)
+    return random.choice(rice)
 
 @route('/getBeans', method='GET')
 def getBeansi():
-    print "I would Like to have Pinto Beans"
-    return "Pinto"
+    beans = ['Pinto', 'Black Beans']
+    print "I would Like to have " + random.choice(beans)
+    return random.choice(beans)
 
 @route('/getSauce', method='GET')
 def getSauce():
-    print "I would Like to have Corn,Mayo"
-    return "Corn,Mayo"
+    sauce = ['Corn Sauce','Mayo', 'Salsa Sauce','Red sauce']
+    print "I would have " + random.choice(sauce)
+    return random.choice(sauce)
 
 @route('/getGarnish', method='GET')
 def getSauce():
-    print "I would Like to have Cheese"
-    return "Cheese"
+    garnish = ['Cheese','Guacamole','Lettuce']
+    print "I would have " + random.choice(garnish)
+    return random.choice(garnish)
 
 @route('/sendBill', method='POST')
 def sendBill():
+    print "Customer reviews the bill"
     bill=request._get_body_string()
+    print "Bill is", bill
     payBill(bill)
-    print bill
+    #print bill
     return "bill received"
 
 def payBill(bill):
@@ -55,13 +64,19 @@ def payBill(bill):
                             params=paymentDict)
 
     if response.code==200:
-        print "Bye"
+        print "Thanks for the Burrito!"
 
 
+def initiateRequest():
+        customerInfo = '{"clientChannel":"localhost:9080","customerName":"Salman"}'
 
+        #Initiate
+        response = unirest.post("http://localhost:8080/markPresence", headers={"Accept": "application/json"},
+                            params=customerInfo)
 
 
 
 
 if __name__ == '__main__':
+    initiateRequest()
     run(host='localhost',port =9080)
